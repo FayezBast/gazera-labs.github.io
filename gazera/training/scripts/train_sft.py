@@ -151,8 +151,7 @@ def main() -> None:
 
     # Add max_seq_length for SFTConfig, eval_strategy for both
     if USE_SFT_CONFIG:
-        training_kwargs["max_seq_length"] = cfg.max_seq_length
-        training_kwargs["dataset_text_field"] = "text"
+        training_kwargs["max_length"] = cfg.max_seq_length
         training_kwargs["eval_strategy"] = "steps"
         training_kwargs["packing"] = False
     else:
