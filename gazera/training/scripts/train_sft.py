@@ -115,7 +115,7 @@ def main() -> None:
         logging_steps=cfg.logging_steps,
         save_steps=cfg.save_steps,
         eval_steps=cfg.eval_steps,
-        evaluation_strategy="steps",
+        eval_strategy="steps",
         save_strategy="steps",
         fp16=compute_dtype == torch.float16,
         bf16=compute_dtype == torch.bfloat16,

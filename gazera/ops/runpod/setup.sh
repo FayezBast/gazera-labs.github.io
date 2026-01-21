@@ -8,20 +8,26 @@ echo "============================================="
 echo "  Gazera Training Environment Setup"
 echo "============================================="
 
-# Navigate to workspace
-cd /workspace
-
-# Clone repo if not exists
-if [ ! -d "gazera" ]; then
-    echo "📦 Cloning Gazera repository..."
-    git clone https://github.com/YOUR_USERNAME/gazera-labs.github.io.git repo
-    ln -sf repo/gazera gazera
+# Detect where we are
+if [ -f "pyproject.toml" ]; then
+    # Already in gazera directory
+    GAZERA_DIR=$(pwd)
+elif [ -f "gazera/pyproject.toml" ]; then
+    # In parent directory
+    GAZERA_DIR=$(pwd)/gazera
+elif [ -f "/workspace/gazera-labs.github.io/gazera/pyproject.toml" ]; then
+    GAZERA_DIR="/workspace/gazera-labs.github.io/gazera"
+elif [ -f "/workspace/gazera/pyproject.toml" ]; then
+    GAZERA_DIR="/workspace/gazera"
 else
-    echo "📦 Gazera already exists, pulling latest..."
-    cd gazera && git pull && cd ..
+    echo "📦 Cloning Gazera repository..."
+    cd /workspace
+    git clone https://github.com/gazera-labs/gazera-labs.github.io.git repo 2>/dev/null || true
+    GAZERA_DIR="/workspace/repo/gazera"
 fi
 
-cd /workspace/gazera
+echo "📁 Using Gazera at: $GAZERA_DIR"
+cd $GAZERA_DIR
 
 # Install dependencies
 echo "📥 Installing Python dependencies..."
