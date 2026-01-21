@@ -1,0 +1,16 @@
+.venv/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.egg-info/
+*.egg
+.DS_Store
+outputs/
+logs/
+*.log
+data/processed/*
+!data/processed/.gitkeep
+node_modules/
+.ui/
+.env

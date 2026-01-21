@@ -1,0 +1,158 @@
+:root {
+  --bg-1: #f7e8d4;
+  --bg-2: #e8f2f0;
+  --ink: #1f2a24;
+  --accent: #d18b47;
+  --accent-2: #2d6a6a;
+  --card: rgba(255, 255, 255, 0.75);
+  --stroke: rgba(31, 42, 36, 0.12);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  color: var(--ink);
+  background: radial-gradient(circle at 10% 20%, var(--bg-2), transparent 45%),
+    radial-gradient(circle at 90% 10%, var(--bg-1), transparent 50%),
+    linear-gradient(120deg, #fef7ec, #f4f9f7);
+}
+
+main {
+  display: flex;
+  justify-content: center;
+  padding: 48px 20px 80px;
+}
+
+.container {
+  width: min(980px, 100%);
+  display: grid;
+  gap: 24px;
+}
+
+.hero {
+  display: grid;
+  gap: 10px;
+}
+
+.hero h1 {
+  font-size: clamp(32px, 4vw, 48px);
+  margin: 0;
+}
+
+.hero p {
+  margin: 0;
+  font-size: 18px;
+  opacity: 0.8;
+}
+
+.panel {
+  background: var(--card);
+  border: 1px solid var(--stroke);
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 24px 60px rgba(31, 42, 36, 0.08);
+  backdrop-filter: blur(8px);
+}
+
+.controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  align-items: center;
+}
+
+.toggle {
+  display: inline-flex;
+  gap: 8px;
+  align-items: center;
+  padding: 8px 14px;
+  border-radius: 999px;
+  border: 1px solid var(--stroke);
+  background: #fff;
+}
+
+.chat-window {
+  min-height: 260px;
+  border-radius: 14px;
+  padding: 18px;
+  background: #fff;
+  border: 1px solid var(--stroke);
+  display: grid;
+  gap: 12px;
+}
+
+.message {
+  padding: 12px 14px;
+  border-radius: 14px;
+  line-height: 1.6;
+}
+
+.message.user {
+  background: rgba(209, 139, 71, 0.16);
+  border: 1px solid rgba(209, 139, 71, 0.3);
+  justify-self: end;
+}
+
+.message.assistant {
+  background: rgba(45, 106, 106, 0.12);
+  border: 1px solid rgba(45, 106, 106, 0.28);
+}
+
+.input-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+
+textarea {
+  flex: 1;
+  min-height: 80px;
+  resize: vertical;
+  border-radius: 12px;
+  border: 1px solid var(--stroke);
+  padding: 12px;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+button {
+  border: none;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 18px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+button.secondary {
+  background: var(--accent-2);
+}
+
+.citations {
+  margin-top: 16px;
+  border-top: 1px dashed var(--stroke);
+  padding-top: 12px;
+}
+
+.citation {
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+@media (max-width: 720px) {
+  main {
+    padding: 32px 16px 60px;
+  }
+  .input-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  button {
+    width: 100%;
+  }
+}

@@ -1,0 +1,38 @@
+[project]
+name = "gazera"
+version = "0.1.0"
+description = "Arabic-first LLM system with training, RAG, serving, and eval"
+readme = "README.md"
+requires-python = ">=3.11"
+license = {text = "Apache-2.0"}
+authors = [{name = "Gazera Labs"}]
+dependencies = [
+  "accelerate>=0.33.0",
+  "bitsandbytes>=0.43.1",
+  "datasets>=2.20.0",
+  "datasketch>=1.6.5",
+  "fastapi>=0.111.0",
+  "numpy>=1.26.4",
+  "pandas>=2.2.2",
+  "peft>=0.11.1",
+  "pydantic>=2.7.4",
+  "pypdf>=4.2.0",
+  "pyyaml>=6.0.1",
+  "qdrant-client>=1.10.1",
+  "requests>=2.32.3",
+  "safetensors>=0.4.3",
+  "scikit-learn>=1.5.1",
+  "sentence-transformers>=3.0.1",
+  "torch>=2.3.1",
+  "transformers>=4.43.3",
+  "trl>=0.9.6",
+  "uvicorn>=0.30.1",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=8.2.2",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]

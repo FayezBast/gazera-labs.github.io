@@ -1,0 +1,15 @@
+base_model: Qwen/Qwen2.5-7B-Instruct
+train_file: data/datasets/train.jsonl
+eval_file: data/datasets/dev.jsonl
+output_dir: outputs/sft_lora
+max_seq_length: 2048
+per_device_train_batch_size: 1
+gradient_accumulation_steps: 16
+learning_rate: 2.0e-4
+warmup_ratio: 0.03
+num_train_epochs: 1
+logging_steps: 10
+save_steps: 200
+eval_steps: 200
+seed: 42
+merge_on_save: false
