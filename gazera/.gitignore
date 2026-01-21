@@ -1,16 +1,72 @@
+# Python
 .venv/
+venv/
+env/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
 *.egg-info/
 *.egg
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+.pytest_cache/
+.coverage
+.hypothesis/
+*.cover
+.tox/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 .DS_Store
+
+# Project specific
 outputs/
 logs/
 *.log
 data/processed/*
 !data/processed/.gitkeep
-node_modules/
-.ui/
+data/raw/*
+!data/raw/.gitkeep
 .env
+.env.local
+
+# Node
+node_modules/
+.next/
+.ui/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Model files
+*.bin
+*.safetensors
+*.gguf
+*.pth
+*.pt
+
+# Temporary files
+*.tmp
+*.bak
+.cache/

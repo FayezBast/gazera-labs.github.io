@@ -1,10 +1,70 @@
+version: '3.8'
+
 services:
   qdrant:
     image: qdrant/qdrant:v1.9.3
+    container_name: gazera-qdrant
     ports:
       - "6333:6333"
+      - "6334:6334"  # gRPC port
     volumes:
       - qdrant_storage:/qdrant/storage
+    environment:
+      - QDRANT__SERVICE__HTTP_PORT=6333
+      - QDRANT__SERVICE__GRPC_PORT=6334
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:6333/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    restart: unless-stopped
+    networks:
+      - gazera-network
+
+  api:
+    build:
+      context: ../..
+      dockerfile: serving/docker/Dockerfile
+    container_name: gazera-api
+    ports:
+      - "8000:8000"
+    environment:
+      - MODEL_PATH=${MODEL_PATH:-Qwen/Qwen2.5-7B-Instruct}
+      - MERGED_MODEL_PATH=${MERGED_MODEL_PATH}
+      - ADAPTER_PATH=${ADAPTER_PATH}
+      - QDRANT_URL=http://qdrant:6333
+      - EMBED_MODEL=${EMBED_MODEL:-intfloat/multilingual-e5-large}
+    volumes:
+      - model_cache:/root/.cache/huggingface
+      - ./../../outputs:/app/outputs:ro
+      - ./../../logs:/app/logs
+    depends_on:
+      qdrant:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8000/health', timeout=5)"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 120s
+    restart: unless-stopped
+    networks:
+      - gazera-network
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]
 
 volumes:
   qdrant_storage:
+    driver: local
+  model_cache:
+    driver: local
+
+networks:
+  gazera-network:
+    driver: bridge
