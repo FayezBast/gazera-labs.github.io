@@ -126,10 +126,9 @@ def main() -> None:
 
     trainer = SFTTrainer(
         model=model,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         train_dataset=train_ds,
         eval_dataset=eval_ds,
-        dataset_text_field="text",
         max_seq_length=cfg.max_seq_length,
         peft_config=lora_config,
         args=training_args,

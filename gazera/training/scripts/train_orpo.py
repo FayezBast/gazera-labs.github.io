@@ -121,7 +121,7 @@ def main() -> None:
         args=training_args,
         train_dataset=train_ds,
         eval_dataset=eval_ds,
-        tokenizer=tokenizer,
+        processing_class=tokenizer,
         peft_config=lora_config,
         max_length=cfg.max_seq_length,
         max_prompt_length=cfg.max_seq_length // 2,
