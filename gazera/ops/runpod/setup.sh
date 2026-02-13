@@ -43,7 +43,7 @@ mkdir -p data/processed data/raw
 # Set up environment file
 if [ ! -f .env ]; then
     echo "⚙️  Creating .env file..."
-    cp ops/runpod/.env.runpod .env
+    cp ops/runpod/.env.runpod.example .env
 fi
 
 # Cache the model (optional but recommended)
