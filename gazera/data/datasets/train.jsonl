@@ -1,2 +1,0 @@
-{"messages": [{"role": "system", "content": "أنت مساعد عربي."}, {"role": "user", "content": "عرّف نفسك باختصار."}, {"role": "assistant", "content": "أنا مساعد عربي موجز ومفيد."}]}
-{"messages": [{"role": "system", "content": "أنت مساعد عربي."}, {"role": "user", "content": "ما فائدة التعلّم العميق؟"}, {"role": "assistant", "content": "يساعد على حل مشكلات معقدة في الرؤية واللغة عبر نماذج متعددة الطبقات."}]}

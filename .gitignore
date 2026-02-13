@@ -1,6 +1,10 @@
 chat_gazi.py
 gazi_dataset.jsonl
 train_gazi.py
+gazera/training/
+gazera/ops/runpod/
+gazera/data/datasets/train.jsonl
+gazera/data/datasets/orpo_train.jsonl
 
 # Environment and secrets
 .env
